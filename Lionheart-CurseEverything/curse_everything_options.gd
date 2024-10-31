@@ -1,6 +1,8 @@
 extends Node 
 
+
 signal setting_changed(setting_name, value, mod_name)
+
 
 # This Mirrors Configs to act as a backup and make reads shorter without string lookups
 var enable_curse_character
@@ -10,8 +12,10 @@ var enable_curse_shop_items
 var enable_curse_enemies
 var enable_curse_any_enemy
 var disable_curse_random
+var min_curse_modifier
 
 var dlc
+
 
 func _ready():
 	if ProgressData.is_dlc_available_and_active("abyssal_terrors"):
@@ -23,6 +27,7 @@ func _ready():
 			disable_all()
 	else:
 		disable_all()
+
 
 func load_mod_options():
 	if not $"/root/ModLoader".has_node("dami-ModOptions"):
@@ -48,11 +53,15 @@ func load_mod_options():
 		if config.has("ENABLE_CURSE_ENEMIES"):
 			enable_curse_enemies = config["ENABLE_CURSE_ENEMIES"]
 		
+		if config.has("ENABLE_CURSE_ANY_ENEMY"):
+			enable_curse_any_enemy = config["ENABLE_CURSE_ANY_ENEMY"]
+
 		if config.has("DISABLE_CURSE_RANDOM"):
 			disable_curse_random = config["DISABLE_CURSE_RANDOM"]
 
-		if config.has("ENABLE_CURSE_ANY_ENEMY"):
-			enable_curse_any_enemy = config["ENABLE_CURSE_ANY_ENEMY"]
+		if config.has("MIN_CURSE_MODIFIER"):
+			min_curse_modifier = config["MIN_CURSE_MODIFIER"]
+
 
 func reset_defaults() -> void:
 	enable_curse_character = true
@@ -62,6 +71,8 @@ func reset_defaults() -> void:
 	enable_curse_enemies = false
 	enable_curse_any_enemy = true
 	disable_curse_random = true
+	min_curse_modifier = 0
+
 
 func disable_all() -> void:
 	enable_curse_character = false
@@ -71,3 +82,4 @@ func disable_all() -> void:
 	enable_curse_enemies = false
 	enable_curse_any_enemy = false
 	disable_curse_random = false
+	min_curse_modifier = 0

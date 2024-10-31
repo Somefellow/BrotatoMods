@@ -9,7 +9,7 @@ func _on_selections_completed()->void :
 		options_node.load_mod_options()
 		
 		if options_node.enable_curse_character:
-			character = options_node.dlc.curse_item(character, player_index, options_node.disable_curse_random)
+			character = options_node.dlc.curse_item(character, player_index, options_node.disable_curse_random, options_node.min_curse_modifier)
 
 		RunData.add_character(character, player_index)
 
