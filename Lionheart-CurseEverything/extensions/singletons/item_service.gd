@@ -68,7 +68,6 @@ func get_player_shop_items(wave: int, player_index: int, args: ItemServiceGetSho
             rand_item_args.excluded_items = args.prev_items + new_items
             rand_item_args.owned_and_shop_items = args.owned_and_shop_items
             rand_item_args.increase_tier = args.increase_tier
-            rand_item_args.fixed_tier = Tier.LEGENDARY
 
             var options_node = $"/root/CurseEverythingOptions"
             options_node.load_mod_options()

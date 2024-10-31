@@ -1,3 +1,3 @@
-# CurseAllItems
+# CurseEverything
 
 https://steamcommunity.com/sharedfiles/filedetails/?id=3357048042
