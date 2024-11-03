@@ -1,7 +1,7 @@
 {
 	"name": "CurseEverything",
 	"namespace": "Lionheart",
-	"version_number": "1.0.2",
+	"version_number": "1.0.3",
 	"description": "Curse Everything!",
 	"website_url": "https://github.com/Somefellow/BrotatoMods",
 	"dependencies": [],
@@ -49,7 +49,7 @@
 					},
 					"DISABLE_CURSE_RANDOM" : {
 						"type": "boolean",
-						"default": true,
+						"default": false,
 						"tooltip": "Disable curse randomisation!"
 					},
 					"MIN_CURSE_MODIFIER" : {
@@ -57,7 +57,7 @@
 						"minimum": 0.0,
 						"maximum": 10.0,
 						"default": 0.0,
-						"tooltip": "Curse modifier is 1.1 with randomisation off. If you set to a larger number it will curse items more!",
+						"tooltip": "Override the minimum curse modifier! If the random curse logic rolls a number lower than this it will use this instead! Leave at 0 to keep base game cursing.",
 						"format": "%.2f X"
 					}
 				}
