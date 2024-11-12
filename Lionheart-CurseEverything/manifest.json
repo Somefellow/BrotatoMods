@@ -1,61 +1,67 @@
 {
 	"name": "CurseEverything",
 	"namespace": "Lionheart",
-	"version_number": "1.0.3",
+	"version_number": "1.0.4",
 	"description": "Curse Everything!",
 	"website_url": "https://github.com/Somefellow/BrotatoMods",
 	"dependencies": [],
 	"extra": {
 		"godot": {
 			"incompatibilities": [],
-			"authors": ["Lionheart"],
-			"compatible_mod_loader_version": ["6.2.0"],
-			"compatible_game_version": ["1.1.0.0"],
+			"authors": [
+				"Lionheart"
+			],
+			"compatible_mod_loader_version": [
+				"6.2.0"
+			],
+			"compatible_game_version": [
+				"1.1.0.0"
+			],
 			"config_defaults": {},
 			"config_schema": {
 				"title": "Curse Everything Settings",
 				"description": "Config for Curse Everything",
-				"type" : "object",
-				"properties" : {
-					"ENABLE_CURSE_CHARACTER" : {
+				"type": "object",
+				"properties": {
+					"ENABLE_CURSE_CHARACTER": {
 						"type": "boolean",
 						"default": true,
 						"tooltip": "Curse your character!"
 					},
-					"ENABLE_CURSE_STARTING_GEAR" : {
+					"ENABLE_CURSE_STARTING_GEAR": {
 						"type": "boolean",
 						"default": true,
 						"tooltip": "Curse your starting items and weapons!"
 					},
-					"ENABLE_CURSE_CRATE_ITEMS" : {
+					"ENABLE_CURSE_CRATE_ITEMS": {
 						"type": "boolean",
 						"default": true,
 						"tooltip": "Curse items in crates!"
 					},
-					"ENABLE_CURSE_SHOP_ITEMS" : {
+					"ENABLE_CURSE_SHOP_ITEMS": {
 						"type": "boolean",
 						"default": true,
 						"tooltip": "Curse items in the shop!"
 					},
-					"ENABLE_CURSE_ENEMIES" : {
+					"ENABLE_CURSE_ENEMIES": {
 						"type": "boolean",
 						"default": false,
 						"tooltip": "Curse all enemies!"
 					},
-					"ENABLE_CURSE_ANY_ENEMY" : {
+					"ENABLE_CURSE_ANY_ENEMY": {
 						"type": "boolean",
 						"default": true,
 						"tooltip": "Allow curse on any enemy! (Looters)"
 					},
-					"DISABLE_CURSE_RANDOM" : {
+					"DISABLE_CURSE_RANDOM": {
 						"type": "boolean",
 						"default": false,
 						"tooltip": "Disable curse randomisation!"
 					},
-					"MIN_CURSE_MODIFIER" : {
+					"MIN_CURSE_MODIFIER": {
 						"type": "number",
 						"minimum": 0.0,
-						"maximum": 10.0,
+						"maximum": 100.0,
 						"default": 0.0,
 						"tooltip": "Override the minimum curse modifier! If the random curse logic rolls a number lower than this it will use this instead! Leave at 0 to keep base game cursing.",
 						"format": "%.2f X"

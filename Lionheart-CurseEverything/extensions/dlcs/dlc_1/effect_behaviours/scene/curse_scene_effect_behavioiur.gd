@@ -1,15 +1,15 @@
 extends "res://dlcs/dlc_1/effect_behaviors/scene/curse_scene_effect_behavior.gd"
 
 
-func _on_EntitySpawner_enemy_spawned(enemy: Enemy)->void :
-	var options_node = $"/root/CurseEverythingOptions"
-	options_node.load_mod_options()
+func _on_EntitySpawner_enemy_spawned(enemy: Enemy) -> void:
+	var options = $"/root/CurseEverythingOptions"
+	options.load_mod_options()
 
 	if _ignore_cursed_enemy_spawn:
 		_ignore_cursed_enemy_spawn = false
-		return 
+		return
 	if enemy is Boss or enemy.stats in _loot_alien_stats:
-		if not options_node.enable_curse_any_enemy:
+		if not options.enable_curse_any_enemy:
 			return
 
 	var curse = 0
@@ -23,11 +23,11 @@ func _on_EntitySpawner_enemy_spawned(enemy: Enemy)->void :
 		curse_chance += player_curse_chance
 
 	var curse_check = Utils.get_chance_success(curse_chance / nb_players) or DebugService.always_curse
-	if options_node.enable_curse_enemies:
+	if options.enable_curse_enemies:
 		curse_check = true
 
 	var can_be_cursed = enemy.can_be_cursed
-	if options_node.enable_curse_any_enemy:
+	if options.enable_curse_any_enemy:
 		can_be_cursed = true
 
 	if curse_check and can_be_cursed:

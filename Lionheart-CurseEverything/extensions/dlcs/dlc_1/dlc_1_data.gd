@@ -1,22 +1,22 @@
 extends "res://dlcs/dlc_1/dlc_1_data.gd"
 
 
-func curse_item(item_data: ItemParentData, player_index: int, turn_randomization_off: bool = false, min_modifier: float = 0.0)->ItemParentData:
+func curse_item(item_data: ItemParentData, player_index: int, turn_randomization_off: bool = false, min_modifier: float = 0.0) -> ItemParentData:
 	if item_data.is_cursed:
 		return item_data
 
-	var new_effects: = []
+	var new_effects := []
 	var max_effect_modifier = 0.0
-	var curse_effect_modified: = false
+	var curse_effect_modified := false
 	var new_item_data = item_data.duplicate()
 
 	if item_data is WeaponData:
-		var effect_modifier: = _get_cursed_item_effect_modifier(turn_randomization_off, min_modifier)
+		var effect_modifier := _get_cursed_item_effect_modifier(turn_randomization_off, min_modifier)
 		max_effect_modifier = max(max_effect_modifier, effect_modifier)
 		new_item_data.stats = _boost_weapon_stats_damage(item_data.stats, effect_modifier)
 
 	for effect in item_data.effects:
-		var effect_modifier: = _get_cursed_item_effect_modifier(turn_randomization_off, min_modifier)
+		var effect_modifier := _get_cursed_item_effect_modifier(turn_randomization_off, min_modifier)
 		max_effect_modifier = max(max_effect_modifier, effect_modifier)
 
 		var new_effect = effect.duplicate()
@@ -24,32 +24,32 @@ func curse_item(item_data: ItemParentData, player_index: int, turn_randomization
 		if effect is StructureEffect:
 			new_effect.is_cursed = true
 			if effect.key == "wandering_bot":
-				
-				assert (item_data.my_id == "item_wandering_bot", "expected item_wandering_bot (got %s)" % item_data.my_id)
+
+				assert(item_data.my_id == "item_wandering_bot", "expected item_wandering_bot (got %s)" % item_data.my_id)
 				var extra_effect = Effect.new()
 				extra_effect.key = "stat_speed"
 				extra_effect.value = int(ceil(wandering_bot_speed * (1.0 + effect_modifier)))
 				new_effects.append(extra_effect)
 			elif effect.spawn_cooldown > 0:
-				
+
 				new_effect.spawn_cooldown = WeaponService.apply_attack_speed_mod_to_cooldown(effect.spawn_cooldown, effect_modifier)
 			elif not effect.stats.scaling_stats.empty():
-				
+
 				new_effect.stats = _boost_weapon_stats_damage(effect.stats, effect_modifier)
-			else :
-				
+			else:
+
 				var stats = effect.stats.duplicate()
-				
+
 				stats.cooldown = WeaponService.apply_attack_speed_mod_to_cooldown(stats.cooldown / Utils.TICKS_PER_SECOND, effect_modifier) * Utils.TICKS_PER_SECOND
 				new_effect.stats = stats
 		elif effect is BurnChanceEffect:
-			
+
 			var burning_data = effect.burning_data.duplicate()
 			burning_data.duration = int(ceil(burning_data.duration * (1.0 + effect_modifier)))
 			burning_data.damage = int(ceil(burning_data.damage * (1.0 + effect_modifier)))
 			new_effect.burning_data = burning_data
 		elif effect is BurningEffect:
-			
+
 			var burning_data = effect.burning_data.duplicate()
 			burning_data.duration = int(ceil(burning_data.duration * (1.0 + effect_modifier)))
 			burning_data.damage = int(ceil(burning_data.damage * (1.0 + effect_modifier)))
@@ -57,7 +57,7 @@ func curse_item(item_data: ItemParentData, player_index: int, turn_randomization
 		elif effect is ItemExplodingEffect:
 			if effect.scale_with_missing_health:
 				new_effect.value = _boost_effect_value_positively(effect, effect_modifier)
-			else :
+			else:
 				new_effect.stats = _boost_weapon_stats_damage(effect.stats, effect_modifier)
 		elif item_data is WeaponData and effect is ExplodingEffect and effect.chance < 1.0:
 			new_effect.chance = min(1.0, new_effect.chance * (1.0 + effect_modifier / 5.0))
@@ -88,7 +88,7 @@ func curse_item(item_data: ItemParentData, player_index: int, turn_randomization
 		elif effect.key == "break_on_hit":
 			new_effect.value2 = _boost_effect_value_positively(new_effect, effect_modifier, false, Sign.POSITIVE, true)
 		elif effect.key == "hp_start_next_wave":
-			new_effect.value = - 100
+			new_effect.value = -100
 		elif effect.key == "item_mirror":
 			new_effects.append(effect)
 			var extra_effect = Effect.new()
@@ -102,27 +102,27 @@ func curse_item(item_data: ItemParentData, player_index: int, turn_randomization
 			new_effects.append(extra_tooltip_effect)
 			continue
 		elif effect.key == "hit_protection":
-			assert (item_data.my_id == "item_tardigrade", "expected item_tardigrade (got %s)" % item_data.my_id)
+			assert(item_data.my_id == "item_tardigrade", "expected item_tardigrade (got %s)" % item_data.my_id)
 			new_effect.value = 2
 			new_effect.text_key = "effect_hit_protection_plural"
 		elif effect.key == "one_shot_trees" or effect.key == "tree_turrets":
-			
+
 			var extra_effect = Effect.new()
 			extra_effect.key = "trees"
 			extra_effect.text_key = "effect_trees"
 			extra_effect.value = 1
 			new_effects.append(extra_effect)
 		elif effect.key == "instant_gold_attracting" and effect.value == 100:
-			assert (item_data.my_id == "item_sifds_relic", "expected item_sifds_relic (got %s)" % item_data.my_id)
+			assert(item_data.my_id == "item_sifds_relic", "expected item_sifds_relic (got %s)" % item_data.my_id)
 			var extra_effect = Effect.new()
 			extra_effect.key = "stat_dodge"
 			extra_effect.value = int(ceil(sifds_relic_dodge * (1.0 + effect_modifier)))
 			new_effects.append(extra_effect)
 		elif effect.key == "hp_regen_bonus":
-			
-			assert (item_data.my_id == "item_potion", "expected item_potion (got %s)" % item_data.my_id)
+
+			assert(item_data.my_id == "item_potion", "expected item_potion (got %s)" % item_data.my_id)
 			new_effect.value2 = min(90.0, _boost_effect_value_positively(effect, effect_modifier, false, Sign.POSITIVE, true))
-		else :
+		else:
 			var override = false
 			var overriden_sign = Sign.POSITIVE
 
@@ -145,13 +145,13 @@ func curse_item(item_data: ItemParentData, player_index: int, turn_randomization
 			elif "weapon_mace" in item_data.my_id and effect.key == "stat_attack_speed":
 				override = true
 				overriden_sign = Sign.POSITIVE
-			elif ((item_data.my_id == "item_baby_gecko" and effect.key == "stat_range") or 
-				(item_data.my_id == "item_potion" and effect.key == "stat_hp_regeneration") or 
+			elif ((item_data.my_id == "item_baby_gecko" and effect.key == "stat_range") or
+				(item_data.my_id == "item_potion" and effect.key == "stat_hp_regeneration") or
 				item_data.my_id == "item_pile_of_books" or item_data.my_id == "item_pocket_factory"):
 				effect_modifier *= increase_factor_for_mediocre_boosts
 			elif new_effect.custom_key == "upgrade_random_weapon":
-				
-				assert (item_data.my_id == "item_anvil", "expected item_anvil (got %s)" % item_data.my_id)
+
+				assert(item_data.my_id == "item_anvil", "expected item_anvil (got %s)" % item_data.my_id)
 				var extra_effect = Effect.new()
 				extra_effect.key = "stat_armor"
 				extra_effect.value = int(ceil(anvil_armor * (1.0 + effect_modifier)))
@@ -195,12 +195,12 @@ func curse_item(item_data: ItemParentData, player_index: int, turn_randomization
 			if effect.key == "stat_curse":
 				curse_effect_modified = true
 
-		
+
 		if effect.custom_key == "increase_tier_on_reroll":
 			new_effect.text_key = "effect_increase_tier_on_reroll_plural"
 		elif effect.key == "modify_every_x_projectile":
 			if effect is WeaponEffectWithSubEffects:
-				
+
 				new_effect.value = max(1, effect.value - 1)
 				if new_effect.value == 1:
 					new_effect.text_key = "effect_weapon_modify_every_x_projectile_first"
