@@ -190,6 +190,8 @@ func curse_item(item_data: ItemParentData, player_index: int, turn_randomization
 					extra_effect.key = "stat_crit_chance"
 					extra_effect.value = int(ceil(hunting_trophy_crit_chance * (1.0 + effect_modifier)))
 					new_effects.append(extra_effect)
+			elif new_effect.key == "next_level_xp_needed":
+				new_effect.value = max(new_effect.value, -99) as int
 
 
 			if effect.key == "stat_curse":
