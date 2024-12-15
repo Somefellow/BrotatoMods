@@ -1,1 +1,11 @@
+# Ignore dropbox attrs
 **/*:com.dropbox.attrs
+
+# Ignore all subdirectories
+*/
+
+# Include mods
+!Lionheart-CurseEverything/
+!Lionheart-PerfectSoldierMovement/
+!Lionheart-RemoveEnemyLimit/
+!Lionheart-HungryPotato/
