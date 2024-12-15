@@ -38,22 +38,22 @@ func load_mod_options() -> void:
 
     if mod_configs.has("Lionheart-CurseEverything"):
         var config = mod_configs["Lionheart-CurseEverything"]
-
+        
         if config.has("ENABLE_CURSE_CHARACTER"):
             enable_curse_character = config["ENABLE_CURSE_CHARACTER"]
-
+        
         if config.has("ENABLE_CURSE_STARTING_GEAR"):
             enable_curse_starting_gear = config["ENABLE_CURSE_STARTING_GEAR"]
-
+            
         if config.has("ENABLE_CURSE_CRATE_ITEMS"):
             enable_curse_crate_items = config["ENABLE_CURSE_CRATE_ITEMS"]
-
+        
         if config.has("ENABLE_CURSE_SHOP_ITEMS"):
             enable_curse_shop_items = config["ENABLE_CURSE_SHOP_ITEMS"]
-
+        
         if config.has("ENABLE_CURSE_ENEMIES"):
             enable_curse_enemies = config["ENABLE_CURSE_ENEMIES"]
-
+        
         if config.has("ENABLE_CURSE_ANY_ENEMY"):
             enable_curse_any_enemy = config["ENABLE_CURSE_ANY_ENEMY"]
 

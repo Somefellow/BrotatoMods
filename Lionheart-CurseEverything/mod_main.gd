@@ -6,7 +6,7 @@ var options_script = load("res://mods-unpacked/Lionheart-CurseEverything/curse_e
 
 func _init() -> void:
 	var dir = ModLoaderMod.get_unpacked_dir() + "Lionheart-CurseEverything/extensions/"
-
+	
 	ModLoaderMod.install_script_extension(dir + "singletons/item_service.gd")
 	ModLoaderMod.install_script_extension(dir + "singletons/run_data.gd")
 	ModLoaderMod.install_script_extension(dir + "singletons/progress_data.gd") # DLC extensions in here

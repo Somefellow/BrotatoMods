@@ -27,7 +27,7 @@ func get_player_shop_items(wave: int, player_index: int, args: ItemServiceGetSho
     var options = $"/root/CurseEverythingOptions"
     options.load_mod_options()
 
-    options.force_curse = options.enable_curse_crate_items
+    options.force_curse = options.enable_curse_shop_items
 
     var items = .get_player_shop_items(wave, player_index, args)
 

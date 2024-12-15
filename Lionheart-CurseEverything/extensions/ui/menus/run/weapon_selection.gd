@@ -8,7 +8,7 @@ func _on_selections_completed() -> void:
 	if options.enable_curse_starting_gear:
 		_on_selections_completed_with_curse(options)
 	else:
-		.on_selections_completed()
+		._on_selections_completed()
 
 
 func _on_selections_completed_with_curse(options) -> void:
