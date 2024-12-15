@@ -2,7 +2,7 @@
 **/*:com.dropbox.attrs
 
 # Ignore all subdirectories
-*/
+/*/
 
 # Include mods
 !Lionheart-CurseEverything/
