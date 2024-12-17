@@ -1,6 +1,9 @@
 # Ignore dropbox attrs
 **/*:com.dropbox.attrs
 
+# Ignore zip files in root
+/*.zip
+
 # Ignore all subdirectories
 /*/
 
