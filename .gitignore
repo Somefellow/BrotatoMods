@@ -2,5 +2,10 @@ original_pck/*
 !original_pck/.gitkeep
 recovered/*
 !recovered/.gitkeep
+!recovered/mods-unpacked/
+recovered/mods-unpacked/*
+!recovered/mods-unpacked/Lionheart-*/
 tools/*
 !tools/.gitkeep
+mods/*
+!mods/.gitkeep
