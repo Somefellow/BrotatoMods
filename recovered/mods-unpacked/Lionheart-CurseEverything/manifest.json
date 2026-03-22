@@ -26,36 +26,43 @@
 					"ENABLE_CURSE_CHARACTER": {
 						"type": "boolean",
 						"default": true,
+						"title": "CURSE_EVERYTHING_ENABLE_CURSE_CHARACTER",
 						"tooltip": "Curse your character!"
 					},
 					"ENABLE_CURSE_STARTING_GEAR": {
 						"type": "boolean",
 						"default": true,
+						"title": "CURSE_EVERYTHING_ENABLE_CURSE_STARTING_GEAR",
 						"tooltip": "Curse your starting items and weapons!"
 					},
 					"ENABLE_CURSE_CRATE_ITEMS": {
 						"type": "boolean",
 						"default": true,
+						"title": "CURSE_EVERYTHING_ENABLE_CURSE_CRATE_ITEMS",
 						"tooltip": "Curse items in crates!"
 					},
 					"ENABLE_CURSE_SHOP_ITEMS": {
 						"type": "boolean",
 						"default": true,
+						"title": "CURSE_EVERYTHING_ENABLE_CURSE_SHOP_ITEMS",
 						"tooltip": "Curse items in the shop!"
 					},
 					"ENABLE_CURSE_ENEMIES": {
 						"type": "boolean",
 						"default": false,
+						"title": "CURSE_EVERYTHING_ENABLE_CURSE_ENEMIES",
 						"tooltip": "Curse all enemies!"
 					},
 					"ENABLE_CURSE_ANY_ENEMY": {
 						"type": "boolean",
 						"default": true,
+						"title": "CURSE_EVERYTHING_ENABLE_CURSE_ANY_ENEMY",
 						"tooltip": "Allow curse on any enemy! (Looters)"
 					},
 					"DISABLE_CURSE_RANDOM": {
 						"type": "boolean",
 						"default": false,
+						"title": "CURSE_EVERYTHING_DISABLE_CURSE_RANDOM",
 						"tooltip": "Disable curse randomisation!"
 					},
 					"MIN_CURSE_MODIFIER": {
@@ -63,6 +70,7 @@
 						"minimum": 0.0,
 						"maximum": 100.0,
 						"default": 0.0,
+						"title": "CURSE_EVERYTHING_MIN_CURSE_MODIFIER",
 						"tooltip": "Override the minimum curse modifier! If the random curse logic rolls a number lower than this it will use this instead! Leave at 0 to keep base game cursing.",
 						"format": "%.2f X"
 					}
