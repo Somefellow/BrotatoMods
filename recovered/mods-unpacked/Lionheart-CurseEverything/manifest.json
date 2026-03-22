@@ -1,7 +1,7 @@
 {
 	"name": "CurseEverything",
 	"namespace": "Lionheart",
-	"version_number": "1.2.0",
+	"version_number": "1.2.1",
 	"description": "Curse Everything!",
 	"website_url": "https://github.com/Somefellow/BrotatoMods",
 	"dependencies": [],
@@ -27,43 +27,43 @@
 						"type": "boolean",
 						"default": true,
 						"title": "CURSE_EVERYTHING_ENABLE_CURSE_CHARACTER",
-						"tooltip": "Curse your character!"
+						"tooltip": "Curses your character at run start."
 					},
 					"ENABLE_CURSE_STARTING_GEAR": {
 						"type": "boolean",
 						"default": true,
 						"title": "CURSE_EVERYTHING_ENABLE_CURSE_STARTING_GEAR",
-						"tooltip": "Curse your starting items and weapons!"
+						"tooltip": "Curses all starting weapons and the items granted by your character before wave 1."
 					},
 					"ENABLE_CURSE_CRATE_ITEMS": {
 						"type": "boolean",
 						"default": true,
 						"title": "CURSE_EVERYTHING_ENABLE_CURSE_CRATE_ITEMS",
-						"tooltip": "Curse items in crates!"
+						"tooltip": "Curses every item you pick up from item crates, including any bonus crate items."
 					},
 					"ENABLE_CURSE_SHOP_ITEMS": {
 						"type": "boolean",
 						"default": true,
 						"title": "CURSE_EVERYTHING_ENABLE_CURSE_SHOP_ITEMS",
-						"tooltip": "Curse items in the shop!"
+						"tooltip": "Curses all items in the shop each wave."
 					},
 					"ENABLE_CURSE_ENEMIES": {
 						"type": "boolean",
 						"default": false,
 						"title": "CURSE_EVERYTHING_ENABLE_CURSE_ENEMIES",
-						"tooltip": "Curse all enemies!"
+						"tooltip": "Guarantees all enemies (except Bosses) spawn cursed, regardless of your Curse stat. Without this, only enemies affected by your Curse stat are cursed."
 					},
 					"ENABLE_CURSE_ANY_ENEMY": {
 						"type": "boolean",
 						"default": true,
 						"title": "CURSE_EVERYTHING_ENABLE_CURSE_ANY_ENEMY",
-						"tooltip": "Allow curse on any enemy! (Looters)"
+						"tooltip": "Allows Looters (the item-dropping aliens) to be cursed. When off, Looters are excluded from enemy cursing even if your Curse stat or the enemy cursing option would normally affect them."
 					},
 					"DISABLE_CURSE_RANDOM": {
 						"type": "boolean",
 						"default": false,
 						"title": "CURSE_EVERYTHING_DISABLE_CURSE_RANDOM",
-						"tooltip": "Disable curse randomisation!"
+						"tooltip": "Makes all curses apply with the same fixed strength instead of varying randomly."
 					},
 					"MIN_CURSE_MODIFIER": {
 						"type": "number",
@@ -71,7 +71,7 @@
 						"maximum": 100.0,
 						"default": 0.0,
 						"title": "CURSE_EVERYTHING_MIN_CURSE_MODIFIER",
-						"tooltip": "Override the minimum curse modifier! If the random curse logic rolls a number lower than this it will use this instead! Leave at 0 to keep base game cursing.",
+						"tooltip": "Sets a floor on how weak a curse can be. Higher values mean weaker curses get bumped up to at least this strength. Leave at 0 for normal cursing behaviour.",
 						"format": "%.2f X"
 					}
 				}
