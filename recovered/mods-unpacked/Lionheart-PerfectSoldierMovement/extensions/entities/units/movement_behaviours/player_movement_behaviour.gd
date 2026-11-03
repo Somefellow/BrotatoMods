@@ -11,7 +11,7 @@ func get_player_index() -> int:
 
 func get_movement() -> Vector2:
 	var player_index := get_player_index()
-	if not RunData.get_player_effect_bool("can_attack_while_moving", player_index) and not ProgressData.is_manual_aim(player_index):
+	if not RunData.get_player_effect_bool(Keys.can_attack_while_moving_hash, player_index) and not Utils.is_manual_aim(player_index):
 		var player = $"/root/Main"._players[player_index]
 		for weapon in player.current_weapons:
 			if (weapon._current_cooldown == 0 and

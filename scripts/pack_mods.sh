@@ -25,6 +25,8 @@ for mod_dir in "$MODS_UNPACKED_DIR"/*/; do
     mkdir -p "$tmp/mods-unpacked"
     cp -r "$mod_dir" "$tmp/mods-unpacked/$mod_name"
 
+    # Start from a fresh zip so files deleted from the mod don't linger in the archive
+    rm -f "$zip_path"
     (cd "$tmp" && zip -r "$zip_path" "mods-unpacked/$mod_name" --quiet)
 
     rm -rf "$tmp/mods-unpacked"

@@ -19,18 +19,18 @@ var force_curse = false
 
 
 func _ready() -> void:
-    if ProgressData.is_dlc_available_and_active("abyssal_terrors"):
-        dlc = ProgressData.get_dlc_data("abyssal_terrors")
-        if dlc:
-            reset_defaults()
-            load_mod_options()
-        else:
-            disable_all()
-    else:
-        disable_all()
+    load_mod_options()
 
 
 func load_mod_options() -> void:
+    # Abyssal Terrors is an item set that can be toggled from the menu at any time, so re-check on every load
+    dlc = ItemService.get_dlc_data_by_id("abyssal_terrors") if ProgressData.has_item_set("abyssal_terrors") else null
+    if not dlc:
+        disable_all()
+        return
+
+    reset_defaults()
+
     if not $"/root/ModLoader".has_node("dami-ModOptions"):
         return
 
