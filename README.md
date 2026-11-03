@@ -44,13 +44,15 @@ Downloads the latest [GDRETools](https://github.com/GDRETools/gdsdecomp) release
 
 ### 2. Decompile the game
 
-Place your `Brotato.pck` (and any DLC `.pck` files) into `original_pck/`, then run:
+Place your `Brotato.pck` into `original_pck/`, then run:
 
 ```bash
 bash scripts/decompile.sh
 ```
 
-This decompiles the base game first, then any DLC files on top of it. Output goes into `recovered/`. The base game must be present — DLC files are picked up automatically.
+Output goes into `recovered/`. Since Brotato 1.2.0.0 all DLC content (Abyssal Terrors, Primal Dread) ships inside `Brotato.pck`; any extra `.pck` files placed alongside it (older game versions) are still decompiled on top of the base game.
+
+To update for a new game version, move the old `recovered/` aside first (keeping `recovered/mods-unpacked/`) so removed files don't linger and you can diff old vs new source.
 
 ### 3. Pack mods for distribution
 

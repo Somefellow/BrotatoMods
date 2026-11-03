@@ -6,6 +6,9 @@ func apply_item_effect_modifications(item: ItemParentData, player_index: int) ->
 
     if options.force_curse:
         item = options.dlc.curse_item(item, player_index, options.disable_curse_random, options.min_curse_modifier)
+        # Cursed items can't also be meca, but Primal Dread's update_item_effects doesn't check that, so skip the DLC pass
+        if item.is_cursed:
+            return item
 
     return .apply_item_effect_modifications(item, player_index)
 

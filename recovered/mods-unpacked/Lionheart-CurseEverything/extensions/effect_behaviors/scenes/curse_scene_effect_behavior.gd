@@ -1,4 +1,4 @@
-extends "res://dlcs/dlc_1/effect_behaviors/scene/curse_scene_effect_behavior.gd"
+extends "res://effect_behaviors/scenes/curse_scene_effect_behavior.gd"
 
 
 func _on_EntitySpawner_enemy_respawned(enemy: Enemy) -> void:
@@ -16,7 +16,8 @@ func _on_EntitySpawner_enemy_respawned(enemy: Enemy) -> void:
 	var nb_players = RunData.get_player_count()
 
 	for player_index in nb_players:
-		var player_curse_stat = Utils.get_stat(Keys.stat_curse_hash, player_index)
+		var curse_stat = max(0, Utils.get_max_capped_stat(Keys.stat_curse_hash, player_index)) as int
+		var player_curse_stat = curse_stat
 		curse += player_curse_stat
 		var player_curse_chance = min(1.0, (Utils.get_curse_factor(player_curse_stat) / 100.0 / 2.0) * (1.0 + (RunData.get_endless_factor() / 2.0)))
 		curse_chance += player_curse_chance

@@ -1,7 +1,7 @@
 {
 	"name": "PerfectSoldierMovement",
 	"namespace": "Lionheart",
-	"version_number": "1.1.0",
+	"version_number": "1.1.1",
 	"description": "Forces 1 frame stand still when moving with soldier and weapon is ready to attack!",
 	"website_url": "https://github.com/Somefellow/BrotatoMods",
 	"dependencies": [],
@@ -15,7 +15,7 @@
 				"6.2.0"
 			],
 			"compatible_game_version": [
-				"1.1.0.0"
+				"1.2.0.0"
 			]
 		}
 	}

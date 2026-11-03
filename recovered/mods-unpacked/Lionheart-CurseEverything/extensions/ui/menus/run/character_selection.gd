@@ -12,6 +12,8 @@ func _on_selections_completed() -> void:
 
 
 func _on_selections_completed_with_curse(options) -> void:
+	if (ProgressData.settings.zone_is_random):
+		_setup_zone(ProgressData.settings.zone_selected)
 	for player_index in RunData.get_player_count():
 		var character = _player_characters[player_index]
 		character = options.dlc.curse_item(character, player_index, options.disable_curse_random, options.min_curse_modifier)

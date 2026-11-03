@@ -13,13 +13,12 @@ func _on_selections_completed() -> void:
 
 func _on_selections_completed_with_curse(options) -> void:
 	for player_index in _player_weapons.size():
-		var element = _player_weapons[player_index]
-
-		if element != null:
-			element = options.dlc.curse_item(element, player_index, options.disable_curse_random, options.min_curse_modifier)
+		for element in _player_weapons[player_index]:
 			if element is WeaponData:
+				element = options.dlc.curse_item(element, player_index, options.disable_curse_random, options.min_curse_modifier)
 				var _weapon = RunData.add_weapon(element, player_index, true)
 			elif element is ItemData:
+				element = options.dlc.curse_item(element, player_index, options.disable_curse_random, options.min_curse_modifier)
 				var _item = RunData.add_item(element, player_index, true)
 
 	RunData.add_starting_items_and_weapons()
